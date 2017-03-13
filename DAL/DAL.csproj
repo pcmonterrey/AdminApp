@@ -53,39 +53,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AdminRokuADO.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="AdminRokuADO.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AdminRokuADO.tt</DependentUpon>
-    </Compile>
     <Compile Include="AdminRokuADO.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AdminRokuADO.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
-    <Compile Include="getUsuarios_Result.cs">
-      <DependentUpon>AdminRokuADO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servicios.cs">
-      <DependentUpon>AdminRokuADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>AdminRokuADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>AdminRokuADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>AdminRokuADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Usuarios.cs">
-      <DependentUpon>AdminRokuADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UsuariosServicios.cs">
-      <DependentUpon>AdminRokuADO.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="AdminRokuADO.edmx">
@@ -107,11 +80,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AdminRokuADO.edmx</DependentUpon>
       <LastGenOutput>AdminRokuADO.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="AdminRokuADO.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AdminRokuADO.edmx</DependentUpon>
-      <LastGenOutput>AdminRokuADO.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

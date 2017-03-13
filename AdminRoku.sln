@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{5BBCF242-C9AD-4971-8518-BD5892DA46AC}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{85FC93DD-A735-43A6-A575-C3336794D513}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminRoku", "AdminRoku\AdminRoku.csproj", "{F059A765-EBC2-4B83-8BAE-5FDF042A5A57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesWCF", "ServicesWCF\ServicesWCF.csproj", "{568A89E4-28D5-4992-B945-B43DD9A434CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F059A765-EBC2-4B83-8BAE-5FDF042A5A57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F059A765-EBC2-4B83-8BAE-5FDF042A5A57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F059A765-EBC2-4B83-8BAE-5FDF042A5A57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{568A89E4-28D5-4992-B945-B43DD9A434CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568A89E4-28D5-4992-B945-B43DD9A434CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{568A89E4-28D5-4992-B945-B43DD9A434CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568A89E4-28D5-4992-B945-B43DD9A434CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

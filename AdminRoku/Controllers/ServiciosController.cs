@@ -8,18 +8,19 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AdminRoku.Models;
-using DAL;
+using Model;
 
 namespace AdminRoku.Controllers
 {
-    public class ServiciosController : Controller
+    public class ServiciosController : BaseController
     {
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Servicios
         public async Task<ActionResult> Index()
         {
-            return View(await db.Servicios.ToListAsync());
+            return View(oBussiness.GetServicios(null));
         }
 
         // GET: Servicios/Details/5

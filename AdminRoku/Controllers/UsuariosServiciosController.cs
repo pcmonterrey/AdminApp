@@ -8,11 +8,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AdminRoku.Models;
-using DAL;
+using Model;
 
 namespace AdminRoku.Controllers
 {
-    public class UsuariosServiciosController : Controller
+    public class UsuariosServiciosController : BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
