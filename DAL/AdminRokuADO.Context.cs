@@ -20,7 +20,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
 using System.Linq;
-
+    using Model;
 
 public partial class AdminRokuEntities : DbContext
 {
