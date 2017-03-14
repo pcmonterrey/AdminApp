@@ -30,10 +30,10 @@ namespace AdminRoku.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Model.Usuarios> Usuarios { get; set; }
+        //public System.Data.Entity.DbSet<Model.Usuarios> Usuarios { get; set; }
 
-        public System.Data.Entity.DbSet<Model.Servicios> Servicios { get; set; }
+        //public System.Data.Entity.DbSet<Model.Servicios> Servicios { get; set; }
 
-        public System.Data.Entity.DbSet<Model.UsuariosServicios> UsuariosServicios { get; set; }
+        //public System.Data.Entity.DbSet<Model.UsuariosServicios> UsuariosServicios { get; set; }
     }
 }

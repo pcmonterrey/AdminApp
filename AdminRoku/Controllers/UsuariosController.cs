@@ -14,12 +14,12 @@ namespace AdminRoku.Controllers
 {
     public class UsuariosController : BaseController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        //private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Usuarios
         public async Task<ActionResult> Index()
         {
-            return View(await db.Usuarios.ToListAsync());
+            return View(new List<Model.Usuarios>());
         }
 
         // GET: Usuarios/Details/5
@@ -29,7 +29,7 @@ namespace AdminRoku.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuarios usuarios = await db.Usuarios.FindAsync(id);
+            Usuarios usuarios = new Usuarios();//await db.Usuarios.FindAsync(id);
             if (usuarios == null)
             {
                 return HttpNotFound();
@@ -52,8 +52,8 @@ namespace AdminRoku.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuarios);
-                await db.SaveChangesAsync();
+                //db.Usuarios.Add(usuarios);
+                //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -67,7 +67,7 @@ namespace AdminRoku.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuarios usuarios = await db.Usuarios.FindAsync(id);
+            Usuarios usuarios = new Usuarios();//await db.Usuarios.FindAsync(id);
             if (usuarios == null)
             {
                 return HttpNotFound();
@@ -84,8 +84,8 @@ namespace AdminRoku.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuarios).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                //db.Entry(usuarios).State = EntityState.Modified;
+                //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(usuarios);
@@ -98,7 +98,7 @@ namespace AdminRoku.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuarios usuarios = await db.Usuarios.FindAsync(id);
+            Usuarios usuarios = new Usuarios();//await db.Usuarios.FindAsync(id);
             if (usuarios == null)
             {
                 return HttpNotFound();
@@ -111,19 +111,11 @@ namespace AdminRoku.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Usuarios usuarios = await db.Usuarios.FindAsync(id);
-            db.Usuarios.Remove(usuarios);
-            await db.SaveChangesAsync();
+            Usuarios usuarios = new Usuarios();//await db.Usuarios.FindAsync(id);
+            //db.Usuarios.Remove(usuarios);
+            //await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

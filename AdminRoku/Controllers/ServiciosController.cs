@@ -15,7 +15,7 @@ namespace AdminRoku.Controllers
     public class ServiciosController : BaseController
     {
 
-        private ApplicationDbContext db = new ApplicationDbContext();
+       // private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Servicios
         public async Task<ActionResult> Index()
@@ -30,7 +30,7 @@ namespace AdminRoku.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Servicios servicios = await db.Servicios.FindAsync(id);
+            Servicios servicios = new Servicios();// await db.Servicios.FindAsync(id);
             if (servicios == null)
             {
                 return HttpNotFound();
@@ -53,8 +53,8 @@ namespace AdminRoku.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Servicios.Add(servicios);
-                await db.SaveChangesAsync();
+                //db.Servicios.Add(servicios);
+                //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -68,7 +68,7 @@ namespace AdminRoku.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Servicios servicios = await db.Servicios.FindAsync(id);
+            Servicios servicios = new Servicios();// await db.Servicios.FindAsync(id);
             if (servicios == null)
             {
                 return HttpNotFound();
@@ -85,8 +85,8 @@ namespace AdminRoku.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(servicios).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                //db.Entry(servicios).State = EntityState.Modified;
+                //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(servicios);
@@ -99,7 +99,7 @@ namespace AdminRoku.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Servicios servicios = await db.Servicios.FindAsync(id);
+            Servicios servicios = new Servicios();// await db.Servicios.FindAsync(id);
             if (servicios == null)
             {
                 return HttpNotFound();
@@ -112,19 +112,11 @@ namespace AdminRoku.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Servicios servicios = await db.Servicios.FindAsync(id);
-            db.Servicios.Remove(servicios);
-            await db.SaveChangesAsync();
+            Servicios servicios = new Servicios();//await db.Servicios.FindAsync(id);
+            //db.Servicios.Remove(servicios);
+            //await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+               
     }
 }
