@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesWCF", "ServicesWCF\
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DatabaseAdminRoku", "DatabaseAdminRoku\DatabaseAdminRoku.sqlproj", "{7F3995BA-FE6E-46EF-ACC6-31D2513CE0D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{BCD3E10B-7192-4892-A5F9-19717C3EBCC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{7F3995BA-FE6E-46EF-ACC6-31D2513CE0D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F3995BA-FE6E-46EF-ACC6-31D2513CE0D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7F3995BA-FE6E-46EF-ACC6-31D2513CE0D8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{BCD3E10B-7192-4892-A5F9-19717C3EBCC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCD3E10B-7192-4892-A5F9-19717C3EBCC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCD3E10B-7192-4892-A5F9-19717C3EBCC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCD3E10B-7192-4892-A5F9-19717C3EBCC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

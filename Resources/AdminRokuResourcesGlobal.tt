@@ -1,0 +1,48 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Windows.Forms" #>
+
+<#@ import namespace="System.Resources" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.ComponentModel.Design" #>
+
+<#
+
+    var nameSpace = "Resources";
+    var enumName = "AdminRokuGlobal";
+
+	var strdir = Path.Combine(Path.GetDirectoryName(this.Host.ResolvePath("")), "Resources\\App_GlobalResources");
+    
+	
+	DirectoryInfo dir = new DirectoryInfo(strdir);
+    var files = dir.GetFiles("*.es-MX.resx");
+#>
+namespace <#=nameSpace#>
+{
+    public static class <#=enumName#>
+    {
+<#	
+	foreach(var filepath in files) {
+	var filePath = Path.Combine(strdir, filepath.Name);
+    using (var reader = new ResXResourceReader(filePath))
+    {
+reader.UseResXDataNodes = true;
+#>
+    <#  foreach(DictionaryEntry entry in reader) { 
+        var name = entry.Key;
+        var node = (ResXDataNode)entry.Value;
+        var value = node.GetValue((ITypeResolutionService) null);
+        var comment = node.Comment;
+        var summary = value;
+        if (!String.IsNullOrEmpty(comment)) summary += " - " + comment;
+    #>	
+		public static string <#= name #>  { get { return AdminRokuResourceManager.GetKeyValue("<#= name #>"); } }
+   <# } #>
+<#
+    }
+}
+#>
+} //
+
+}///

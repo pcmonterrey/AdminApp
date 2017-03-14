@@ -291,6 +291,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_GlobalResources\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -309,6 +310,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{5bbcf242-c9ad-4971-8518-bd5892da46ac}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resources\Resources.csproj">
+      <Project>{bcd3e10b-7192-4892-a5f9-19717c3ebcc0}</Project>
+      <Name>Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
