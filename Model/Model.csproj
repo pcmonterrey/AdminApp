@@ -48,7 +48,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AdminRokuADO.tt</DependentUpon>
     </Compile>
-    <Compile Include="getUsuarios_Result.cs">
+    <Compile Include="GetServicios.cs">
       <DependentUpon>AdminRokuADO.tt</DependentUpon>
     </Compile>
     <Compile Include="Servicios.cs">

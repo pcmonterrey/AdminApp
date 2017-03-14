@@ -14,16 +14,14 @@ namespace Model
 
 using System;
     
-public partial class getUsuarios_Result
+public partial class GetServicios
 {
+
+    public string Descripcion { get; set; }
 
     public int Id { get; set; }
 
-    public string Nombre { get; set; }
-
-    public string Usuario { get; set; }
-
-    public string Contrasena { get; set; }
+    public decimal Costo { get; set; }
 
     public bool Estado { get; set; }
 

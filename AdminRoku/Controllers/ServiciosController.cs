@@ -15,7 +15,7 @@ namespace AdminRoku.Controllers
     public class ServiciosController : BaseController
     {
 
-       // private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Servicios
         public async Task<ActionResult> Index()

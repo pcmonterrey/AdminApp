@@ -20,7 +20,8 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
 using System.Linq;
-    using Model;
+using Model;
+
 
 public partial class AdminRokuEntities : DbContext
 {
@@ -179,10 +180,15 @@ public partial class AdminRokuEntities : DbContext
     }
 
 
-    public virtual ObjectResult<getUsuarios_Result> getUsuarios()
+    public virtual ObjectResult<GetServicios> GetServicios(Nullable<bool> estatus)
     {
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getUsuarios_Result>("getUsuarios");
+        var estatusParameter = estatus.HasValue ?
+            new ObjectParameter("Estatus", estatus) :
+            new ObjectParameter("Estatus", typeof(bool));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetServicios>("GetServicios", estatusParameter);
     }
 
 }
