@@ -10,7 +10,7 @@
 <#
 
     var nameSpace = "Resources";
-    var enumName = "AdminRokuGlobal";
+    var enumName = "AdminRokuResourcesGlobal";
 
 	var strdir = Path.Combine(Path.GetDirectoryName(this.Host.ResolvePath("")), "Resources\\App_GlobalResources");
     
