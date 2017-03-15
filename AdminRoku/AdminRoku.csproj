@@ -194,6 +194,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\General.es-MX.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>General.es-MX.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Servicios.es-MX.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Servicios.es-MX.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Usuarios.es-MX.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Usuarios.es-MX.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\UsuariosServicios.es-MX.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsuariosServicios.es-MX.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -291,7 +311,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="App_GlobalResources\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -303,10 +322,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{85fc93dd-a735-43a6-a575-c3336794d513}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{5bbcf242-c9ad-4971-8518-bd5892da46ac}</Project>
       <Name>Model</Name>
@@ -315,6 +330,28 @@
       <Project>{bcd3e10b-7192-4892-a5f9-19717c3ebcc0}</Project>
       <Name>Resources</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ServicesWCF\ServicesWCF.csproj">
+      <Project>{568a89e4-28d5-4992-b945-b43dd9a434cd}</Project>
+      <Name>ServicesWCF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\General.es-MX.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>General.es-MX.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Servicios.es-MX.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Servicios.es-MX.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Usuarios.es-MX.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Usuarios.es-MX.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\UsuariosServicios.es-MX.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>UsuariosServicios.es-MX.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

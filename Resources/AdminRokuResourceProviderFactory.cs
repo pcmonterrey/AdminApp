@@ -21,17 +21,17 @@ namespace Resources
         public override IResourceProvider
           CreateGlobalResourceProvider(string classname)
         {
-            return new HEBResourceProvider(null, classname);
+            return new AdminRokuResourceProvider(null, classname);
         }
         public override IResourceProvider
           CreateLocalResourceProvider(string virtualPath)
         {
-            return new HEBResourceProvider(virtualPath, null);
+            return new AdminRokuResourceProvider(virtualPath, null);
         }
     }
 
     // Define the resource provider for global and local resources.
-    internal class HEBResourceProvider : IResourceProvider
+    internal class AdminRokuResourceProvider : IResourceProvider
     {
 
 
@@ -45,7 +45,7 @@ namespace Resources
         string _virtualPath;
         string _className;
 
-        public HEBResourceProvider(string virtualPath, string classname)
+        public AdminRokuResourceProvider(string virtualPath, string classname)
         {
             _virtualPath = virtualPath; // ?? System.Web.HttpContext.Current.Server.MapPath("~/App_GlobalResource");
             _className = classname;
@@ -137,17 +137,17 @@ namespace Resources
                     cultureName = currentUICulture.Name;
                 }
 
-                return new HEBResourceReader(GetResourceCache(cultureName));
+                return new AdminRokuResourceReader(GetResourceCache(cultureName));
             }
         }
     }
 
 
-    internal sealed class HEBResourceReader : IResourceReader
+    internal sealed class AdminRokuResourceReader : IResourceReader
     {
         private IDictionary _resources;
 
-        public HEBResourceReader(IDictionary resources)
+        public AdminRokuResourceReader(IDictionary resources)
         {
             _resources = resources;
         }

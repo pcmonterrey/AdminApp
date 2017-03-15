@@ -20,7 +20,7 @@ namespace AdminRoku.Controllers
         // GET: Servicios
         public async Task<ActionResult> Index()
         {
-            return View(oBussiness.GetServicios(null));
+            return View(oServices.GetServicios(null));
         }
 
         // GET: Servicios/Details/5
