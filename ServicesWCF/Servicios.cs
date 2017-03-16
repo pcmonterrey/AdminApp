@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.Threading.Tasks;
 
 namespace ServicesWCF
 {    
@@ -19,7 +20,7 @@ namespace ServicesWCF
             Model.Servicios response = oBussinessServicios.CreateServicio(servicio);
             return response;
         }
-
+        
         public List<Model.Servicios> GetServicios(bool? onlyActive)
         {
             List<Model.Servicios> response = oBussinessServicios.GetServicios(onlyActive);

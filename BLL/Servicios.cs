@@ -70,6 +70,7 @@ namespace BLL
             }
         }
 
+
         public List<Model.Servicios> GetServicios(bool? onlyActive)
         {
             using (SqlConnection cn = new SqlConnection(_connectionString))
