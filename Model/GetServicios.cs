@@ -13,20 +13,27 @@ namespace Model
 {
 
 using System;
-    
+    using System.ComponentModel.DataAnnotations;
+     using Resources;
 public partial class GetServicios
 {
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelGetServiciosDescripcion")]
     public string Descripcion { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelGetServiciosId")]
     public int Id { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelGetServiciosCosto")]
     public decimal Costo { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelGetServiciosEstado")]
     public bool Estado { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelGetServiciosFechaCreacion")]
     public System.DateTime FechaCreacion { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelGetServiciosFechaModificacion")]
     public Nullable<System.DateTime> FechaModificacion { get; set; }
 
 }

@@ -1,5 +1,4 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public interface IAdminRoku
+    public interface IUsuarios
     {
-        List<Servicios> GetServicios(bool? onlyActive);
+        List<Model.Usuarios> GetUsuarios(bool? onlyActive);
     }
 }

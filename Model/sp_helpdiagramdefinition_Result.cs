@@ -13,12 +13,15 @@ namespace Model
 {
 
 using System;
-    
+    using System.ComponentModel.DataAnnotations;
+     using Resources;
 public partial class sp_helpdiagramdefinition_Result
 {
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsp_helpdiagramdefinition_Resultversion")]
     public Nullable<int> version { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsp_helpdiagramdefinition_Resultdefinition")]
     public byte[] definition { get; set; }
 
 }

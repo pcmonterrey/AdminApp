@@ -9,9 +9,9 @@ namespace AdminRoku.Controllers
 {
     public class BaseController : Controller
     {        
-        public ServicesWCF.ServiceRokuAdmin oServices;
+        public ServicesWCF.Servicios oServices;
         public BaseController(){
-            oServices = new ServicesWCF.ServiceRokuAdmin();
+            oServices = new ServicesWCF.Servicios();
         }
     }
 }

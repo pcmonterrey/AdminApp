@@ -20,12 +20,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Estado)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaCreacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaModificacion)
-        </th>
         <th></th>
     </tr>
 
@@ -39,12 +33,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaCreacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaModificacion)
         </td>
         <td>
             @Html.ActionLink(AdminRokuResourcesGlobal.linkEditar, "Edit", new { id=item.Id }) |

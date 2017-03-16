@@ -49,7 +49,7 @@ namespace AdminRoku.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Descripcion,Costo,Estado,FechaCreacion,FechaModificacion")] Servicios servicios)
+        public async Task<ActionResult> Create([Bind(Include = "Descripcion,Costo")] Servicios servicios)
         {
             if (ModelState.IsValid)
             {

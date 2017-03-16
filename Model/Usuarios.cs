@@ -14,7 +14,8 @@ namespace Model
 
 using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+     using Resources;
 public partial class Usuarios
 {
 
@@ -26,18 +27,25 @@ public partial class Usuarios
     }
 
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelUsuariosId")]
     public int Id { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelUsuariosNombre")]
     public string Nombre { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelUsuariosUsuario")]
     public string Usuario { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelUsuariosContrasena")]
     public string Contrasena { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelUsuariosEstado")]
     public bool Estado { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelUsuariosFechaCreacion")]
     public System.DateTime FechaCreacion { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "LabelUsuariosFechaModificacion")]
     public Nullable<System.DateTime> FechaModificacion { get; set; }
 
 

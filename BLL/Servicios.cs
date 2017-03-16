@@ -9,18 +9,21 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class AdminRoku :IAdminRoku
+    public class Servicios :Base, IServicios
     {
-        //private string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[1].ToString();
-        private string connectionString = Properties.Settings.Default["DefaultConnection"].ToString();
+        private string _connectionString;
+        public Servicios()
+        {
+            _connectionString = connectionString;
+        }
         public List<Model.Servicios> GetServicios(bool? onlyActive)
         {
-            using (SqlConnection cn = new SqlConnection(connectionString))
+            using (SqlConnection cn = new SqlConnection(_connectionString))
             {
                 try
                 {
                     cn.Open();
-                    List<Servicios> listResult = new List<Servicios>();
+                    List<Model.Servicios> listResult = new List<Model.Servicios>();
                     using (SqlCommand sqlCommand = new SqlCommand())
                     {
                         sqlCommand.Connection = cn;
@@ -43,7 +46,7 @@ namespace BLL
                                 {
                                     dtFechaModificacion = null;
                                 }
-                                Servicios model = new Servicios
+                                Model.Servicios model = new Model.Servicios
                                 {
                                     Id = Convert.ToInt32(reader["Id"]),
                                     Descripcion = reader["Descripcion"].ToString(),
@@ -51,9 +54,6 @@ namespace BLL
                                     Costo = Convert.ToDecimal(reader["Costo"]),
                                     FechaCreacion = Convert.ToDateTime(reader["FechaCreacion"]),
                                     FechaModificacion = dtFechaModificacion
-                                    //ModelId = Convert.ToInt32(reader[0]),
-                                    //FirstName = reader[1].ToString()
-
                                 };
                                 listResult.Add(model);
                             }
@@ -63,7 +63,7 @@ namespace BLL
                 }
                 catch (Exception ex)
                 {
-                    return new List<Servicios>();
+                    return new List<Model.Servicios>();
                 }
                 finally
                 {
