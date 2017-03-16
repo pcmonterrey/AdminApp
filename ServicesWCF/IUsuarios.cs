@@ -14,7 +14,7 @@ namespace ServicesWCF
         List<Model.Usuarios> GetUsuarios(bool? onlyActive);
 
         [OperationContract]
-        Servicios CreateUsuarios(Model.Usuarios servicio);
+        Model.Usuarios CreateUsuarios(Model.Usuarios usuario);
         // TODO: Add your service operations here
     }
 }

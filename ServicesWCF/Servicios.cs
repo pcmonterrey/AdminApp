@@ -8,20 +8,21 @@ namespace ServicesWCF
 {    
     public class Servicios : IServicios
     {
-        private BLL.Servicios oBussinessAdminRoku;
+        private BLL.Servicios oBussinessServicios;
         public Servicios()
         {
-            oBussinessAdminRoku = new BLL.Servicios();
+            oBussinessServicios = new BLL.Servicios();
         }
 
-        public Servicios CreateServicios(Model.Servicios servicio)
+        public Model.Servicios CreateServicios(Model.Servicios servicio)
         {
-            throw new NotImplementedException();
+            Model.Servicios response = oBussinessServicios.CreateServicio(servicio);
+            return response;
         }
 
         public List<Model.Servicios> GetServicios(bool? onlyActive)
         {
-            List<Model.Servicios> response = oBussinessAdminRoku.GetServicios(onlyActive);
+            List<Model.Servicios> response = oBussinessServicios.GetServicios(onlyActive);
             return response;
         }
     }

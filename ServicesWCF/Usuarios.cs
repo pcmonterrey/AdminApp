@@ -9,7 +9,7 @@ namespace ServicesWCF
 {
     public class Usuarios : IUsuarios
     {
-        public Servicios CreateUsuarios(Model.Usuarios servicio)
+        public Model.Usuarios CreateUsuarios(Model.Usuarios usuario)
         {
             throw new NotImplementedException();
         }

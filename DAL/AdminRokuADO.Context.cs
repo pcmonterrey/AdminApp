@@ -180,7 +180,7 @@ public partial class AdminRokuEntities : DbContext
     }
 
 
-    public virtual ObjectResult<GetServicios> GetServicios(Nullable<bool> estatus)
+    public virtual ObjectResult<Servicios> GetServicios(Nullable<bool> estatus)
     {
 
         var estatusParameter = estatus.HasValue ?
@@ -188,7 +188,53 @@ public partial class AdminRokuEntities : DbContext
             new ObjectParameter("Estatus", typeof(bool));
 
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetServicios>("GetServicios", estatusParameter);
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Servicios>("GetServicios", estatusParameter);
+    }
+
+
+    public virtual ObjectResult<Servicios> GetServicios(Nullable<bool> estatus, MergeOption mergeOption)
+    {
+
+        var estatusParameter = estatus.HasValue ?
+            new ObjectParameter("Estatus", estatus) :
+            new ObjectParameter("Estatus", typeof(bool));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Servicios>("GetServicios", mergeOption, estatusParameter);
+    }
+
+
+    public virtual ObjectResult<Servicios> InsertServicio(string descripcion, Nullable<decimal> costo)
+    {
+
+        var descripcionParameter = descripcion != null ?
+            new ObjectParameter("Descripcion", descripcion) :
+            new ObjectParameter("Descripcion", typeof(string));
+
+
+        var costoParameter = costo.HasValue ?
+            new ObjectParameter("Costo", costo) :
+            new ObjectParameter("Costo", typeof(decimal));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Servicios>("InsertServicio", descripcionParameter, costoParameter);
+    }
+
+
+    public virtual ObjectResult<Servicios> InsertServicio(string descripcion, Nullable<decimal> costo, MergeOption mergeOption)
+    {
+
+        var descripcionParameter = descripcion != null ?
+            new ObjectParameter("Descripcion", descripcion) :
+            new ObjectParameter("Descripcion", typeof(string));
+
+
+        var costoParameter = costo.HasValue ?
+            new ObjectParameter("Costo", costo) :
+            new ObjectParameter("Costo", typeof(decimal));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Servicios>("InsertServicio", mergeOption, descripcionParameter, costoParameter);
     }
 
 }

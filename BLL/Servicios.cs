@@ -16,6 +16,60 @@ namespace BLL
         {
             _connectionString = connectionString;
         }
+
+        public Model.Servicios CreateServicio(Model.Servicios servicio)
+        {
+            using (SqlConnection cn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    cn.Open();
+                    Model.Servicios objResult = new Model.Servicios();
+                    using (SqlCommand sqlCommand = new SqlCommand())
+                    {
+                        sqlCommand.Connection = cn;
+                        sqlCommand.CommandType = CommandType.StoredProcedure;
+                        sqlCommand.CommandText = "InsertServicio";
+                        sqlCommand.Parameters.AddWithValue("@Descripcion", servicio.Descripcion);
+                        sqlCommand.Parameters.AddWithValue("@Costo", servicio.Costo);
+                        using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                DateTime? dtFechaModificacion = new DateTime();
+                                if (!string.IsNullOrEmpty(reader["FechaModificacion"].ToString()))
+                                {
+                                    dtFechaModificacion = Convert.ToDateTime(reader["FechaModificacion"]);
+                                }
+                                else
+                                {
+                                    dtFechaModificacion = null;
+                                }
+                                objResult = new Model.Servicios
+                                {
+                                    Id = Convert.ToInt32(reader["Id"]),
+                                    Descripcion = reader["Descripcion"].ToString(),
+                                    Estado = Convert.ToBoolean(reader["Estado"]),
+                                    Costo = Convert.ToDecimal(reader["Costo"]),
+                                    FechaCreacion = Convert.ToDateTime(reader["FechaCreacion"]),
+                                    FechaModificacion = dtFechaModificacion
+                                };
+                            }
+                        }
+                    }
+                    return objResult;
+                }
+                catch (Exception ex)
+                {
+                    return new Model.Servicios();
+                }
+                finally
+                {
+                    cn.Close();
+                }
+            }
+        }
+
         public List<Model.Servicios> GetServicios(bool? onlyActive)
         {
             using (SqlConnection cn = new SqlConnection(_connectionString))

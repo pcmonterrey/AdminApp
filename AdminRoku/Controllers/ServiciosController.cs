@@ -20,7 +20,7 @@ namespace AdminRoku.Controllers
         // GET: Servicios
         public async Task<ActionResult> Index()
         {
-            return View(oServices.GetServicios(null));
+            return View(oServicios.GetServicios(null));
         }
 
         // GET: Servicios/Details/5
@@ -55,6 +55,7 @@ namespace AdminRoku.Controllers
             {
                 //db.Servicios.Add(servicios);
                 //await db.SaveChangesAsync();
+                Servicios objResult = oServicios.CreateServicios(servicios);
                 return RedirectToAction("Index");
             }
 
