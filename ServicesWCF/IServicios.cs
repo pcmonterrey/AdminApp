@@ -10,11 +10,13 @@ namespace ServicesWCF
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
-    public interface IServiceRokuAdmin
+    public interface IServicios
     {
         [OperationContract]
-        List<Servicios> GetServicios(bool? onlyActive);
+        List<Model.Servicios> GetServicios(bool? onlyActive);
 
+        [OperationContract]
+        Model.Servicios CreateServicios(Model.Servicios servicio);
         // TODO: Add your service operations here
     }
     }

@@ -13,18 +13,24 @@ namespace Model
 {
 
 using System;
-    
+    using System.ComponentModel.DataAnnotations;
+     using Resources;
 public partial class sp_helpdiagrams_Result
 {
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsp_helpdiagrams_ResultDatabase")]
     public string Database { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsp_helpdiagrams_ResultName")]
     public string Name { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsp_helpdiagrams_ResultID")]
     public int ID { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsp_helpdiagrams_ResultOwner")]
     public string Owner { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsp_helpdiagrams_ResultOwnerID")]
     public int OwnerID { get; set; }
 
 }

@@ -278,12 +278,16 @@ public class CodeStringGenerator
     {
         return string.Format(
             CultureInfo.InvariantCulture,
-            "{0} {1} {2} {{ {3}get; {4}set; }}",
+            //"{0} {1} {2} {{ {3}get; {4}set; }}",
+			"[Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = \"Label{5}{6}\")]{7}{0} {1} {2} {{ {3}get; {4}set; }}",
             Accessibility.ForProperty(edmProperty),
             _typeMapper.GetTypeName(edmProperty.TypeUsage),
             _code.Escape(edmProperty),
             _code.SpaceAfter(Accessibility.ForGetter(edmProperty)),
-            _code.SpaceAfter(Accessibility.ForSetter(edmProperty)));
+            _code.SpaceAfter(Accessibility.ForSetter(edmProperty)),
+			edmProperty.DeclaringType.Name,
+			_code.Escape(edmProperty),
+			Environment.NewLine);
     }
 
     public string NavigationProperty(NavigationProperty navigationProperty)
@@ -419,10 +423,13 @@ public class CodeStringGenerator
             ? string.Format(
                 CultureInfo.InvariantCulture,
                 "{0}using System;{1}" +
-                "{2}",
+                "{2}{3}{4}{5}",
                 inHeader ? Environment.NewLine : "",
                 includeCollections ? (Environment.NewLine + "using System.Collections.Generic;") : "",
-                inHeader ? "" : Environment.NewLine)
+                inHeader ? "" : Environment.NewLine,
+				"using System.ComponentModel.DataAnnotations;",
+				inHeader ? "" : Environment.NewLine,
+				" using Resources;")
             : "";
     }
 }

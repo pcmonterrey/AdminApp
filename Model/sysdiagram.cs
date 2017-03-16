@@ -14,18 +14,24 @@ namespace Model
 
 using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+     using Resources;
 public partial class sysdiagram
 {
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsysdiagramname")]
     public string name { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsysdiagramprincipal_id")]
     public int principal_id { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsysdiagramdiagram_id")]
     public int diagram_id { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsysdiagramversion")]
     public Nullable<int> version { get; set; }
 
+    [Display(ResourceType = typeof(AdminRokuResourcesGlobal), Name = "Labelsysdiagramdefinition")]
     public byte[] definition { get; set; }
 
 }

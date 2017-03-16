@@ -25,6 +25,15 @@ namespace AdminRoku
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
+            /* Archivos JS para Servicios */
+            bundles.Add(new ScriptBundle("~/bundles/ServiciosCreate").Include(
+                      "~/Scripts/Views/Servicios/Create.js"));
+            /******************************/
+
+            /* Archivos JS para Usuario */
+            bundles.Add(new ScriptBundle("~/bundles/UsuarioCreate").Include(
+                      "~/Scripts/Views/Usuarios/Create.js"));
+            /******************************/
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

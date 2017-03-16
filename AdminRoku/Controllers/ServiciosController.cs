@@ -20,7 +20,7 @@ namespace AdminRoku.Controllers
         // GET: Servicios
         public async Task<ActionResult> Index()
         {
-            return View(oServices.GetServicios(null));
+            return View(oServicios.GetServicios(null));
         }
 
         // GET: Servicios/Details/5
@@ -49,12 +49,13 @@ namespace AdminRoku.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Descripcion,Costo,Estado,FechaCreacion,FechaModificacion")] Servicios servicios)
+        public async Task<ActionResult> Create([Bind(Include = "Descripcion,Costo")] Servicios servicios)
         {
             if (ModelState.IsValid)
             {
                 //db.Servicios.Add(servicios);
                 //await db.SaveChangesAsync();
+                Servicios objResult = oServicios.CreateServicios(servicios);
                 return RedirectToAction("Index");
             }
 
