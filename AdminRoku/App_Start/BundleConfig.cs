@@ -8,6 +8,9 @@ namespace AdminRoku
         // Para obtener más información sobre Bundles, visite http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/datetime").Include(
+    "~/Scripts/moment*",
+    "~/Scripts/bootstrap-datetimepicker*"));
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -25,7 +28,13 @@ namespace AdminRoku
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/bootstrap-datetimepicker.css",
+                      "~/Content/bootstrap-theme.css",
+                      "~/Content/bootstrap/",
+                      "~/Content/fonts/",
+                      "~/Content/themes"
+                      ));
         }
     }
 }

@@ -46,7 +46,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FechaInicioServicio, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="input-group date " id="datetimepicker1">
+                <div class="input-group date" id="datetimepicker1">
                     @Html.EditorFor(model => model.FechaInicioServicio, new { htmlAttributes = new { @class = "form-control" } })
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
@@ -92,4 +92,18 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker2').datetimepicker({
+            useCurrent: false
+        });
+        $("#datetimepicker1").on("dp.change", function (e) {
+            $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker2").on("dp.change", function (e) {
+            $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+        });
+            });
+    </script>
 }
