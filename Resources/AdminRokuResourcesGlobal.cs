@@ -22,6 +22,38 @@ namespace Resources
 		public static string LabelServiciosFechaModificacion  { get { return AdminRokuResourceManager.GetKeyValue("LabelServiciosFechaModificacion"); } }
    	
 		public static string LabelServiciosId  { get { return AdminRokuResourceManager.GetKeyValue("LabelServiciosId"); } }
-           } //
+       	
+		public static string LabelUsuariosContrasena  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosContrasena"); } }
+   	
+		public static string LabelUsuariosEstado  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosEstado"); } }
+   	
+		public static string LabelUsuariosFechaCreacion  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosFechaCreacion"); } }
+   	
+		public static string LabelUsuariosFechaModificacion  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosFechaModificacion"); } }
+   	
+		public static string LabelUsuariosId  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosId"); } }
+   	
+		public static string LabelUsuariosNombre  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosNombre"); } }
+   	
+		public static string LabelUsuariosUsuario  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosUsuario"); } }
+       	
+		public static string LabelUsuariosServiciosEstado  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosServiciosEstado"); } }
+   	
+		public static string LabelUsuariosServiciosFechaCreacion  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosServiciosFechaCreacion"); } }
+   	
+		public static string LabelUsuariosServiciosFechaFinServicio  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosServiciosFechaFinServicio"); } }
+   	
+		public static string LabelUsuariosServiciosFechaInicioServicio  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosServiciosFechaInicioServicio"); } }
+   	
+		public static string LabelUsuariosServiciosFechaModificacion  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosServiciosFechaModificacion"); } }
+   	
+		public static string LabelUsuariosServiciosId  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosServiciosId"); } }
+   	
+		public static string LabelUsuariosServiciosIdServicio  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosServiciosIdServicio"); } }
+   	
+		public static string LabelUsuariosServiciosIdUsario  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosServiciosIdUsario"); } }
+   	
+		public static string LabelUsuariosServiciosNumeroCreditos  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosServiciosNumeroCreditos"); } }
+   } //
 
 }///
