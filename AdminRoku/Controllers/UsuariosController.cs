@@ -19,7 +19,8 @@ namespace AdminRoku.Controllers
         // GET: Usuarios
         public async Task<ActionResult> Index()
         {
-            return View(new List<Model.Usuarios>());
+            return View(oUsuarios.GetUsuarios(null));
+            // return View(new List<Model.Usuarios>());
         }
 
         // GET: Usuarios/Details/5

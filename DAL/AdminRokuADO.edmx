@@ -79,7 +79,7 @@
         <Function Name="GetUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Estatus" Type="bit" Mode="In" />
         </Function>
-        <Function Name="InsertUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="InsertUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
           <Parameter Name="Contrasena" Type="varchar" Mode="In" />
@@ -156,9 +156,9 @@
             <End Role="UsuariosServicios" EntitySet="UsuariosServicios" />
           </AssociationSet>
           <FunctionImport Name="GetUsuarios">
-            <Parameter Name="Estatus" Mode="In" Type="Boolean" />
+          <Parameter Name="Estatus" Mode="In" Type="Boolean" />
           </FunctionImport>
-          <FunctionImport Name="InsertUsuarios">
+          <FunctionImport Name="InsertUsuario">
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Usuario" Mode="In" Type="String" />
             <Parameter Name="Contrasena" Mode="In" Type="String" />
@@ -288,7 +288,7 @@
     </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetUsuarios" FunctionName="AdminRokuModel.Store.GetUsuarios">
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="InsertUsuarios" FunctionName="AdminRokuModel.Store.InsertUsuarios" />
+          <FunctionImportMapping FunctionImportName="InsertUsuario" FunctionName="AdminRokuModel.Store.InsertUsuario" />
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

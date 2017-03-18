@@ -146,7 +146,7 @@ namespace DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetUsuarios", estatusParameter);
         }
     
-        public virtual int InsertUsuarios(string nombre, string usuario, string contrasena)
+        public virtual int InsertUsuario(string nombre, string usuario, string contrasena)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
@@ -160,7 +160,7 @@ namespace DAL
                 new ObjectParameter("Contrasena", contrasena) :
                 new ObjectParameter("Contrasena", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUsuarios", nombreParameter, usuarioParameter, contrasenaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUsuario", nombreParameter, usuarioParameter, contrasenaParameter);
         }
     }
 }
