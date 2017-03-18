@@ -9,5 +9,8 @@ namespace BLL
     public interface IUsuarios
     {
         List<Model.Usuarios> GetUsuarios(bool? onlyActive);
+
+        
+        Model.Usuarios CreateUsuario(Model.Usuarios usuario);
     }
 }

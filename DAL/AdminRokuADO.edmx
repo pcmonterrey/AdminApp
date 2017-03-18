@@ -76,6 +76,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Estatus" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="InsertUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Contrasena" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="AdminRokuModelStoreContainer">
           <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -122,11 +130,11 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(AdminRokuModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(AdminRokuModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -147,37 +155,15 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="UsuariosServicios" EntitySet="UsuariosServicios" />
           </AssociationSet>
-          <FunctionImport Name="GetServicios" EntitySet="Servicios" ReturnType="Collection(AdminRokuModel.Servicios)">
-          <Parameter Name="Estatus" Mode="In" Type="Boolean" />
+          <FunctionImport Name="GetUsuarios">
+            <Parameter Name="Estatus" Mode="In" Type="Boolean" />
           </FunctionImport>
-          <FunctionImport Name="InsertServicio" EntitySet="Servicios" ReturnType="Collection(AdminRokuModel.Servicios)">
-            <Parameter Name="Descripcion" Mode="In" Type="String" />
-            <Parameter Name="Costo" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="GetUsuarios" EntitySet="Usuarios" ReturnType="Collection(AdminRokuModel.Usuarios)">
-          <Parameter Name="Estatus" Mode="In" Type="Boolean" />
-          </FunctionImport>
-          <FunctionImport Name="InsertUsuarios" EntitySet="Usuarios" ReturnType="Collection(AdminRokuModel.Usuarios)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <FunctionImport Name="InsertUsuarios">
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Usuario" Mode="In" Type="String" />
             <Parameter Name="Contrasena" Mode="In" Type="String" />
-            <Parameter Name="Estado" Mode="In" Type="Boolean" />
-            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
-            <Parameter Name="FechaModificacion" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
         <EntityType Name="Servicios">
           <Key>
             <PropertyRef Name="Id" />
@@ -243,15 +229,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetUsuarios_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="250" />
-          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Contrasena" Nullable="false" MaxLength="50" />
-          <Property Type="Boolean" Name="Estado" Nullable="false" />
-          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -309,7 +286,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="GetUsuarios" FunctionName="AdminRokuModel.Store.GetUsuarios">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertUsuarios" FunctionName="AdminRokuModel.Store.InsertUsuarios" />
+  </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

@@ -9,14 +9,21 @@ namespace ServicesWCF
 {
     public class Usuarios : IUsuarios
     {
+        private BLL.Usuarios oBussinessUsuarios;
+        public Usuarios()
+        {
+            oBussinessUsuarios = new BLL.Usuarios();
+        }
         public Model.Usuarios CreateUsuarios(Model.Usuarios usuario)
         {
-            throw new NotImplementedException();
+            Model.Usuarios response = oBussinessUsuarios.CreateUsuario(usuario);
+            return response;
         }
 
         public List<Model.Usuarios> GetUsuarios(bool? onlyActive)
         {
-            throw new NotImplementedException();
+            List<Model.Usuarios> response = oBussinessUsuarios.GetUsuarios(onlyActive);
+            return response;
         }
     }
 }

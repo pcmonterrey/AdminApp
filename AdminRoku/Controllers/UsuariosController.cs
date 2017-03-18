@@ -48,10 +48,11 @@ namespace AdminRoku.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Nombre,Usuario,Contrasena,Estado,FechaCreacion,FechaModificacion")] Usuarios usuarios)
+        public async Task<ActionResult> Create([Bind(Include = "Nombre,Usuario,Contrasena")] Usuarios usuarios)
         {
             if (ModelState.IsValid)
             {
+                oUsuarios.CreateUsuarios(usuarios);
                 //db.Usuarios.Add(usuarios);
                 //await db.SaveChangesAsync();
                 return RedirectToAction("Index");

@@ -89,7 +89,7 @@ namespace DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -99,10 +99,10 @@ namespace DAL
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -112,7 +112,7 @@ namespace DAL
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
@@ -137,74 +137,17 @@ namespace DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual ObjectResult<Servicios> GetServicios(Nullable<bool> estatus)
+        public virtual int GetUsuarios(Nullable<bool> estatus)
         {
             var estatusParameter = estatus.HasValue ?
                 new ObjectParameter("Estatus", estatus) :
                 new ObjectParameter("Estatus", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Servicios>("GetServicios", estatusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetUsuarios", estatusParameter);
         }
     
-        public virtual ObjectResult<Servicios> GetServicios(Nullable<bool> estatus, MergeOption mergeOption)
+        public virtual int InsertUsuarios(string nombre, string usuario, string contrasena)
         {
-            var estatusParameter = estatus.HasValue ?
-                new ObjectParameter("Estatus", estatus) :
-                new ObjectParameter("Estatus", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Servicios>("GetServicios", mergeOption, estatusParameter);
-        }
-    
-        public virtual ObjectResult<Servicios> InsertServicio(string descripcion, Nullable<decimal> costo)
-        {
-            var descripcionParameter = descripcion != null ?
-                new ObjectParameter("Descripcion", descripcion) :
-                new ObjectParameter("Descripcion", typeof(string));
-    
-            var costoParameter = costo.HasValue ?
-                new ObjectParameter("Costo", costo) :
-                new ObjectParameter("Costo", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Servicios>("InsertServicio", descripcionParameter, costoParameter);
-        }
-    
-        public virtual ObjectResult<Servicios> InsertServicio(string descripcion, Nullable<decimal> costo, MergeOption mergeOption)
-        {
-            var descripcionParameter = descripcion != null ?
-                new ObjectParameter("Descripcion", descripcion) :
-                new ObjectParameter("Descripcion", typeof(string));
-    
-            var costoParameter = costo.HasValue ?
-                new ObjectParameter("Costo", costo) :
-                new ObjectParameter("Costo", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Servicios>("InsertServicio", mergeOption, descripcionParameter, costoParameter);
-        }
-    
-        public virtual ObjectResult<Usuarios> GetUsuarios(Nullable<bool> estatus)
-        {
-            var estatusParameter = estatus.HasValue ?
-                new ObjectParameter("Estatus", estatus) :
-                new ObjectParameter("Estatus", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usuarios>("GetUsuarios", estatusParameter);
-        }
-    
-        public virtual ObjectResult<Usuarios> GetUsuarios(Nullable<bool> estatus, MergeOption mergeOption)
-        {
-            var estatusParameter = estatus.HasValue ?
-                new ObjectParameter("Estatus", estatus) :
-                new ObjectParameter("Estatus", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usuarios>("GetUsuarios", mergeOption, estatusParameter);
-        }
-    
-        public virtual ObjectResult<Usuarios> InsertUsuarios(Nullable<int> id, string nombre, string usuario, string contrasena, Nullable<bool> estado, Nullable<System.DateTime> fechaCreacion, Nullable<System.DateTime> fechaModificacion)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-    
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
                 new ObjectParameter("Nombre", typeof(string));
@@ -217,52 +160,7 @@ namespace DAL
                 new ObjectParameter("Contrasena", contrasena) :
                 new ObjectParameter("Contrasena", typeof(string));
     
-            var estadoParameter = estado.HasValue ?
-                new ObjectParameter("Estado", estado) :
-                new ObjectParameter("Estado", typeof(bool));
-    
-            var fechaCreacionParameter = fechaCreacion.HasValue ?
-                new ObjectParameter("FechaCreacion", fechaCreacion) :
-                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
-    
-            var fechaModificacionParameter = fechaModificacion.HasValue ?
-                new ObjectParameter("FechaModificacion", fechaModificacion) :
-                new ObjectParameter("FechaModificacion", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usuarios>("InsertUsuarios", idParameter, nombreParameter, usuarioParameter, contrasenaParameter, estadoParameter, fechaCreacionParameter, fechaModificacionParameter);
-        }
-    
-        public virtual ObjectResult<Usuarios> InsertUsuarios(Nullable<int> id, string nombre, string usuario, string contrasena, Nullable<bool> estado, Nullable<System.DateTime> fechaCreacion, Nullable<System.DateTime> fechaModificacion, MergeOption mergeOption)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-    
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("Nombre", nombre) :
-                new ObjectParameter("Nombre", typeof(string));
-    
-            var usuarioParameter = usuario != null ?
-                new ObjectParameter("Usuario", usuario) :
-                new ObjectParameter("Usuario", typeof(string));
-    
-            var contrasenaParameter = contrasena != null ?
-                new ObjectParameter("Contrasena", contrasena) :
-                new ObjectParameter("Contrasena", typeof(string));
-    
-            var estadoParameter = estado.HasValue ?
-                new ObjectParameter("Estado", estado) :
-                new ObjectParameter("Estado", typeof(bool));
-    
-            var fechaCreacionParameter = fechaCreacion.HasValue ?
-                new ObjectParameter("FechaCreacion", fechaCreacion) :
-                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
-    
-            var fechaModificacionParameter = fechaModificacion.HasValue ?
-                new ObjectParameter("FechaModificacion", fechaModificacion) :
-                new ObjectParameter("FechaModificacion", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usuarios>("InsertUsuarios", mergeOption, idParameter, nombreParameter, usuarioParameter, contrasenaParameter, estadoParameter, fechaCreacionParameter, fechaModificacionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUsuarios", nombreParameter, usuarioParameter, contrasenaParameter);
         }
     }
 }
