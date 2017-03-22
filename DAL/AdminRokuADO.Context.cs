@@ -191,5 +191,48 @@ namespace DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUsuario", nombreParameter, usuarioParameter, contrasenaParameter);
         }
+    
+        public virtual int GetServicios(Nullable<bool> estatus)
+        {
+            var estatusParameter = estatus.HasValue ?
+                new ObjectParameter("Estatus", estatus) :
+                new ObjectParameter("Estatus", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetServicios", estatusParameter);
+        }
+    
+        public virtual int InsertServicio(string descripcion, Nullable<decimal> costo)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var costoParameter = costo.HasValue ?
+                new ObjectParameter("Costo", costo) :
+                new ObjectParameter("Costo", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertServicio", descripcionParameter, costoParameter);
+        }
+    
+        public virtual int EditServicio(string descripcion, Nullable<decimal> costo, Nullable<bool> estado, Nullable<int> id)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var costoParameter = costo.HasValue ?
+                new ObjectParameter("Costo", costo) :
+                new ObjectParameter("Costo", typeof(decimal));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditServicio", descripcionParameter, costoParameter, estadoParameter, idParameter);
+        }
     }
 }

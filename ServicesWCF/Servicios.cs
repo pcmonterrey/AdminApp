@@ -26,5 +26,12 @@ namespace ServicesWCF
             List<Model.Servicios> response = oBussinessServicios.GetServicios(onlyActive);
             return response;
         }
+
+        public Model.Servicios EditServicios(Model.Servicios servicio)
+        {
+            Model.Servicios response = oBussinessServicios.EditServicio(servicio);
+            return response;
+        }
+        
     }
 }

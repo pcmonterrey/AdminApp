@@ -86,6 +86,7 @@ namespace AdminRoku.Controllers
         {
             if (ModelState.IsValid)
             {
+                oServicios.EditServicios(servicios);
                 //db.Entry(servicios).State = EntityState.Modified;
                 //await db.SaveChangesAsync();
                 return RedirectToAction("Index");

@@ -126,5 +126,63 @@ namespace BLL
                 }
             }
         }
+
+        public Model.Servicios EditServicio(Model.Servicios servicio)
+        {
+            using (SqlConnection cn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    cn.Open();
+                    Model.Servicios objResult = new Model.Servicios();
+                    using (SqlCommand sqlcommand = new SqlCommand())
+                    {
+                        sqlcommand.Connection = cn;
+                        sqlcommand.CommandType = CommandType.StoredProcedure;
+                        sqlcommand.CommandText = "EditServicio";
+                        sqlcommand.Parameters.AddWithValue("@Id", servicio.Id);
+                        sqlcommand.Parameters.AddWithValue("@Descripcion",servicio.Descripcion);
+                        //sqlcommand.Parameters.AddWithValue("@FechaModificacion", SqlDbType.DateTime);
+                        sqlcommand.Parameters.AddWithValue("@Costo", servicio.Costo);
+                        sqlcommand.Parameters.AddWithValue("@Estado", servicio.Estado);
+                        using (SqlDataReader reader = sqlcommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                DateTime? dtFechaModificacion = new DateTime();
+                                if (!String.IsNullOrEmpty(reader["FechaModificacion"].ToString()))
+                                {
+                                    dtFechaModificacion = Convert.ToDateTime(reader["FechaModificacion"]);
+                                }
+                                else
+                                {
+                                    dtFechaModificacion = Convert.ToDateTime(reader["FechaModificacion"]);
+                                }
+                                objResult = new Model.Servicios
+                                {
+                                    Id = Convert.ToInt32(reader["Id"]),
+                                    Descripcion = reader["Descripcion"].ToString(),
+                                    Estado = Convert.ToBoolean(reader["Estado"]),
+                                    Costo = Convert.ToDecimal(reader["Costo"]),
+                                    FechaCreacion = Convert.ToDateTime(reader["FechaCreacion"]),
+                                    FechaModificacion = dtFechaModificacion
+
+                                };
+                            }
+                        }
+                    }
+                    return objResult;
+                }
+                catch (Exception e)
+                {
+                    return new Model.Servicios();
+                }
+                finally
+                {
+                    cn.Close();
+                }
+            }
+        }
+
     }
 }
