@@ -25,5 +25,11 @@ namespace ServicesWCF
             List<Model.Usuarios> response = oBussinessUsuarios.GetUsuarios(onlyActive);
             return response;
         }
+        public Model.Usuarios EditUsuarios(Model.Usuarios usuario)
+        {
+            Model.Usuarios response = oBussinessUsuarios.EditUsuario(usuario);
+            return response;
+        }
+
     }
 }

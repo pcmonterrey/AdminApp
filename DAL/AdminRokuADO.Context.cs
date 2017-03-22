@@ -146,6 +146,35 @@ namespace DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetUsuarios", estatusParameter);
         }
     
+        public virtual int EditUsuario(Nullable<int> id, string nombre, string usuario, string contrasena, Nullable<System.DateTime> fechaMod, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var usuarioParameter = usuario != null ?
+                new ObjectParameter("Usuario", usuario) :
+                new ObjectParameter("Usuario", typeof(string));
+    
+            var contrasenaParameter = contrasena != null ?
+                new ObjectParameter("Contrasena", contrasena) :
+                new ObjectParameter("Contrasena", typeof(string));
+    
+            var fechaModParameter = fechaMod.HasValue ?
+                new ObjectParameter("FechaMod", fechaMod) :
+                new ObjectParameter("FechaMod", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditUsuario", idParameter, nombreParameter, usuarioParameter, contrasenaParameter, fechaModParameter, estadoParameter);
+        }
+    
         public virtual int InsertUsuario(string nombre, string usuario, string contrasena)
         {
             var nombreParameter = nombre != null ?

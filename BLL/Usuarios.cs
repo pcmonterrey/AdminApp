@@ -86,7 +86,7 @@ namespace BLL
                         sqlCommand.Connection = cn;
                         sqlCommand.CommandType = CommandType.StoredProcedure;
                         sqlCommand.CommandText = "GetUsuarios";
-                        sqlCommand.Parameters.AddWithValue("@estado", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@Estatus", DBNull.Value);
 
                         using (SqlDataReader reader = sqlCommand.ExecuteReader())
                         {
@@ -107,6 +107,7 @@ namespace BLL
                                     Id = Convert.ToInt32(reader["Id"]),
                                     Nombre = reader["Nombre"].ToString(),
                                     Usuario = reader["Usuario"].ToString(),
+                                    Contrasena = reader["Contrasena"].ToString(),
                                     Estado = Convert.ToBoolean(reader["Estado"]),
                                     FechaCreacion = Convert.ToDateTime(reader["FechaCreacion"]),
                                     FechaModificacion = dtFechaModificacion
@@ -128,6 +129,65 @@ namespace BLL
                     cn.Close();
                 }
 
+            }
+        }
+
+        public Model.Usuarios EditUsuario(Model.Usuarios usuario)
+        {
+            using (SqlConnection cn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    cn.Open();
+                    Model.Usuarios objResult = new Model.Usuarios();
+                    using (SqlCommand sqlcommand = new SqlCommand())
+                    {
+                        sqlcommand.Connection = cn;
+                        sqlcommand.CommandType = CommandType.StoredProcedure;
+                        sqlcommand.CommandText = "EditUsuario";
+                        sqlcommand.Parameters.AddWithValue("@Id", usuario.Id);
+                        sqlcommand.Parameters.AddWithValue("@Nombre", usuario.Nombre);
+                        sqlcommand.Parameters.AddWithValue("@FechaMod", SqlDbType.DateTime);
+                        sqlcommand.Parameters.AddWithValue("@Usuario", usuario.Usuario);
+                        sqlcommand.Parameters.AddWithValue("@Contrasena", usuario.Contrasena);
+                        sqlcommand.Parameters.AddWithValue("@Estado", usuario.Estado);
+                        using (SqlDataReader reader = sqlcommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                DateTime? dtFechaModificacion = new DateTime();
+                                if (!String.IsNullOrEmpty(reader["FechaMod"].ToString()))
+                                {
+                                    dtFechaModificacion = Convert.ToDateTime(reader["FechaMod"]);
+                                }
+                                else
+                                {
+                                    dtFechaModificacion = Convert.ToDateTime(reader["FechaMod"]);
+                                }
+                                objResult = new Model.Usuarios
+                                {
+                                    Id = Convert.ToInt32(reader["Id"]),
+                                    Nombre = reader["Nombre"].ToString(),
+                                    Usuario = reader["Usuario"].ToString(),
+                                    Contrasena = reader["Contraseña"].ToString(),
+                                    Estado = Convert.ToBoolean(reader["Estado"]),
+                                    FechaCreacion = Convert.ToDateTime(reader["FechaCreacion"]),
+                                    FechaModificacion = dtFechaModificacion
+
+                                };
+                            }
+                        }
+                    }
+                    return objResult;
+                }
+                catch (Exception e)
+                {
+                    return new Model.Usuarios();
+                }
+                finally
+                {
+                    cn.Close();
+                }
             }
         }
 
