@@ -15,6 +15,9 @@ namespace ServicesWCF
 
         [OperationContract]
         Model.Usuarios CreateUsuarios(Model.Usuarios usuario);
+
+        [OperationContract]
+        Model.Usuarios EditUsuarios(Model.Usuarios usuario);
         // TODO: Add your service operations here
     }
 }

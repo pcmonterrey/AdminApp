@@ -11,6 +11,7 @@ namespace BLL
     {
         List<Model.Servicios> GetServicios(bool? onlyActive);
         Model.Servicios CreateServicio(Model.Servicios servicio);
-        
+        Model.Servicios EditServicio(Model.Servicios servicio);
+
     }
 }

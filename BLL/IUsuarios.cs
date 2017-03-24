@@ -12,5 +12,6 @@ namespace BLL
 
         
         Model.Usuarios CreateUsuario(Model.Usuarios usuario);
+        Model.Usuarios EditUsuario(Model.Usuarios usuario);
     }
 }

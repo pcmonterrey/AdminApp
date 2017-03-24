@@ -18,6 +18,9 @@ namespace ServicesWCF
 
         [OperationContract]
         Model.Servicios CreateServicios(Model.Servicios servicio);
-        
+
+        [OperationContract]
+        Model.Servicios EditServicios(Model.Servicios servicio);
+
     }
 }

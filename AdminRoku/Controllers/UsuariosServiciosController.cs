@@ -19,7 +19,7 @@ namespace AdminRoku.Controllers
         // GET: UsuariosServicios
         public async Task<ActionResult> Index()
         {
-            return View(new List<Model.UsuariosServicios>());
+            return View(oUsuariosServicios.CreateUsuariosServicios(null));
         }
 
         // GET: UsuariosServicios/Details/5
@@ -52,6 +52,7 @@ namespace AdminRoku.Controllers
         {
             if (ModelState.IsValid)
             {
+                oUsuariosServicios.CreateUsuariosServicios(usuariosServicios);
                 //db.UsuariosServicios.Add(usuariosServicios);
                 //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -84,6 +85,7 @@ namespace AdminRoku.Controllers
         {
             if (ModelState.IsValid)
             {
+                oUsuariosServicios.EditUsuariosServicios(usuariosServicios);
                 //db.Entry(usuariosServicios).State = EntityState.Modified;
                 //await db.SaveChangesAsync();
                 return RedirectToAction("Index");

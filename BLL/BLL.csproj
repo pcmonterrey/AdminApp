@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Base.cs" />
     <Compile Include="IUsuarios.cs" />
+    <Compile Include="IUsuariosServicios.cs" />
     <Compile Include="Servicios.cs" />
     <Compile Include="IServicios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +54,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Usuarios.cs" />
+    <Compile Include="UsuariosServicios.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

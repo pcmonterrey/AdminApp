@@ -11,9 +11,11 @@ namespace AdminRoku.Controllers
     {        
         public ServicesWCF.Servicios oServicios;
         public ServicesWCF.Usuarios oUsuarios;
+        public ServicesWCF.UsuariosServicios oUsuariosServicios;
         public BaseController(){
             oServicios = new ServicesWCF.Servicios();
             oUsuarios = new ServicesWCF.Usuarios();
+            oUsuariosServicios = new ServicesWCF.UsuariosServicios();
         }
     }
 }
