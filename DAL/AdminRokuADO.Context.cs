@@ -234,5 +234,14 @@ namespace DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditServicio", descripcionParameter, costoParameter, estadoParameter, idParameter);
         }
+    
+        public virtual ObjectResult<GetUsuariosServicios> GetUsuariosServicios(Nullable<bool> estatus)
+        {
+            var estatusParameter = estatus.HasValue ?
+                new ObjectParameter("Estatus", estatus) :
+                new ObjectParameter("Estatus", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsuariosServicios>("GetUsuariosServicios", estatusParameter);
+        }
     }
 }

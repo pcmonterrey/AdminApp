@@ -96,6 +96,9 @@
         <Function Name="GetUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Estatus" Type="bit" Mode="In" />
         </Function>
+        <Function Name="GetUsuariosServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Estatus" Type="bit" Mode="In" />
+        </Function>
         <Function Name="InsertServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
           <Parameter Name="Costo" Type="decimal" Mode="In" />
@@ -205,6 +208,9 @@
             <Parameter Name="Estado" Mode="In" Type="Boolean" />
             <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetUsuariosServicios" ReturnType="Collection(AdminRokuModel.GetUsuariosServicios)">
+            <Parameter Name="Estatus" Mode="In" Type="Boolean" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Servicios">
           <Key>
@@ -271,6 +277,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetUsuariosServicios">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="DescripcionServicio" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="250" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaInicioServicio" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="FechaFinServicio" Nullable="false" Precision="23" />
+          <Property Type="Int16" Name="NumeroCreditos" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -336,6 +353,21 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="InsertServicio" FunctionName="AdminRokuModel.Store.InsertServicio" />
           <FunctionImportMapping FunctionImportName="EditServicio" FunctionName="AdminRokuModel.Store.EditServicio" />
+          <FunctionImportMapping FunctionImportName="GetUsuariosServicios" FunctionName="AdminRokuModel.Store.GetUsuariosServicios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdminRokuModel.GetUsuariosServicios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DescripcionServicio" ColumnName="DescripcionServicio" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="FechaInicioServicio" ColumnName="FechaInicioServicio" />
+                <ScalarProperty Name="FechaFinServicio" ColumnName="FechaFinServicio" />
+                <ScalarProperty Name="NumeroCreditos" ColumnName="NumeroCreditos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

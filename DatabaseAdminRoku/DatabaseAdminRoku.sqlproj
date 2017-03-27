@@ -62,4 +62,16 @@
     <Folder Include="Funciones" />
     <Folder Include="CargaInicial" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tablas\Usuarios.sql" />
+    <Build Include="Tablas\Servicios.sql" />
+    <Build Include="Tablas\UsuariosServicios.sql" />
+    <Build Include="StoreProcedures\GetUsuarios.sql" />
+    <Build Include="StoreProcedures\InsertUsuario.sql" />
+    <Build Include="StoreProcedures\EditUsuario.sql" />
+    <Build Include="StoreProcedures\EditServicio.sql" />
+    <Build Include="StoreProcedures\GetServicios.sql" />
+    <Build Include="StoreProcedures\InsertServicio.sql" />
+    <Build Include="StoreProcedures\GetUsuariosServicios.sql" />
+  </ItemGroup>
 </Project>

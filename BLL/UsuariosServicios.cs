@@ -93,25 +93,26 @@ namespace BLL
                             while (reader.Read())
                             {
                                 DateTime? dtFechaModificacion = new DateTime();
-                                if (!string.IsNullOrEmpty(reader["FechaModificacion"].ToString()))
+                                if (!string.IsNullOrEmpty(reader["UsuariosServicios.FechaModificacion"].ToString()))
                                 {
-                                    dtFechaModificacion = Convert.ToDateTime(reader["FechaModificacion"]);
+                                    dtFechaModificacion = Convert.ToDateTime(reader["UsuariosServicios.FechaModificacion"]);
                                 }
                                 else
                                 {
                                     dtFechaModificacion = null;
                                 }
 
-                                Model.UsuariosServicios model = new Model.UsuariosServicios
+                                Model.GetUsuariosServicios model = new Model.GetUsuariosServicios
                                 {
-                                    Id = Convert.ToInt32(reader["Id"]),
-                                    //Nombre = reader["Nombre"].ToString(),
-                                    //Usuario = reader["Usuario"].ToString(),
-                                    //Contrasena = reader["Contrasena"].ToString(),
-                                    Estado = Convert.ToBoolean(reader["Estado"]),
-                                    FechaCreacion = Convert.ToDateTime(reader["FechaCreacion"]),
-                                    FechaModificacion = dtFechaModificacion
-
+                                    Id = Convert.ToInt32(reader["UsuariosServicios.Id"]),
+                                    NombreUsuario = reader["NombreUsuario"].ToString(),
+                                    DescripcionServicio = reader["DescripcionServicio"].ToString(),
+                                    Estado = Convert.ToBoolean(reader["UsuariosServicios.Estado"]),
+                                    FechaCreacion = Convert.ToDateTime(reader["UsuariosServicios.FechaCreacion"]),
+                                    FechaModificacion = dtFechaModificacion,
+                                    FechaInicioServicio = Convert.ToDateTime(reader["UsuariosServicios.FechaInicioServicio"]),
+                                    FechaFinServicio = Convert.ToDateTime(reader["UsuariosServicios.FechaFinServicio"]),
+                                    NumeroCreditos = Convert.ToInt16(reader["UsuariosServicios.NumeroCreditos"])
                                 };
                                 listResult.Add(model);
                             }
