@@ -54,7 +54,9 @@
     <Compile Include="LocalizationContants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="GetUsuariosServicios.es-MX" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="AdminRokuResourcesGlobal.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -243,5 +243,30 @@ namespace DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsuariosServicios>("GetUsuariosServicios", estatusParameter);
         }
+    
+        public virtual int InsertUsuarioServicio(Nullable<int> idServicio, Nullable<int> idUsuario, Nullable<System.DateTime> fechaInicioServicio, Nullable<System.DateTime> fechaFinServicio, Nullable<short> numerosCreditos)
+        {
+            var idServicioParameter = idServicio.HasValue ?
+                new ObjectParameter("IdServicio", idServicio) :
+                new ObjectParameter("IdServicio", typeof(int));
+    
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(int));
+    
+            var fechaInicioServicioParameter = fechaInicioServicio.HasValue ?
+                new ObjectParameter("FechaInicioServicio", fechaInicioServicio) :
+                new ObjectParameter("FechaInicioServicio", typeof(System.DateTime));
+    
+            var fechaFinServicioParameter = fechaFinServicio.HasValue ?
+                new ObjectParameter("FechaFinServicio", fechaFinServicio) :
+                new ObjectParameter("FechaFinServicio", typeof(System.DateTime));
+    
+            var numerosCreditosParameter = numerosCreditos.HasValue ?
+                new ObjectParameter("NumerosCreditos", numerosCreditos) :
+                new ObjectParameter("NumerosCreditos", typeof(short));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUsuarioServicio", idServicioParameter, idUsuarioParameter, fechaInicioServicioParameter, fechaFinServicioParameter, numerosCreditosParameter);
+        }
     }
 }

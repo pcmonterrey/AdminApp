@@ -6,7 +6,8 @@
 
 
 <h2>Create</h2>
-
+@Html.DropDownListFor(model => model.IdServicio, new SelectList(new[]{"1",
+"2", "3"}), htmlAttributes: new { @class = "control-label col-md-2" }))
 
 @using (Html.BeginForm()) 
 {
@@ -19,7 +20,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdServicio, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IdServicio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.IdServicio, new SelectList(new[]{"1",
+"2", "3"}), new { @class = "form-control" } )
                 @Html.ValidationMessageFor(model => model.IdServicio, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -27,7 +29,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdUsario, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IdUsario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.IdUsario, new SelectList(new[]{"1",
+"2", "3"}), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdUsario, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -83,15 +86,18 @@
                 @Scripts.Render("~/bundles/jqueryval")
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker1').datetimepicker({format:"YYYY-MM-DD HH:mm" });
         $('#datetimepicker2').datetimepicker({
-            useCurrent: false 
+            useCurrent: false,
+            format: "YYYY-MM-DD HH:mm"
         });
         $("#datetimepicker1").on("dp.change", function (e) {
             $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+            
         });
         $("#datetimepicker2").on("dp.change", function (e) {
             $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+           
         });
             });
 </script>

@@ -9,7 +9,7 @@ namespace BLL
 {
     public interface IUsuariosServicios
     {
-        List<Model.UsuariosServicios> GetUsuariosServicios(bool? onlyActive);
+        List<Model.GetUsuariosServicios> GetUsuariosServicios(bool? onlyActive);
 
 
         Model.UsuariosServicios CreateUsuarioServicio(Model.UsuariosServicios usuarioServicio);

@@ -108,6 +108,13 @@
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
           <Parameter Name="Contrasena" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="InsertUsuarioServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdServicio" Type="int" Mode="In" />
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="FechaInicioServicio" Type="datetime" Mode="In" />
+          <Parameter Name="FechaFinServicio" Type="datetime" Mode="In" />
+          <Parameter Name="NumerosCreditos" Type="smallint" Mode="In" />
+        </Function>
         <EntityContainer Name="AdminRokuModelStoreContainer">
           <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -209,7 +216,14 @@
             <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetUsuariosServicios" ReturnType="Collection(AdminRokuModel.GetUsuariosServicios)">
-            <Parameter Name="Estatus" Mode="In" Type="Boolean" />
+          <Parameter Name="Estatus" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="InsertUsuarioServicio">
+            <Parameter Name="IdServicio" Mode="In" Type="Int32" />
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="FechaInicioServicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFinServicio" Mode="In" Type="DateTime" />
+            <Parameter Name="NumerosCreditos" Mode="In" Type="Int16" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Servicios">
@@ -368,6 +382,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertUsuarioServicio" FunctionName="AdminRokuModel.Store.InsertUsuarioServicio" />
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

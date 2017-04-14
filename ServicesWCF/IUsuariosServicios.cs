@@ -13,7 +13,7 @@ namespace ServicesWCF
     public interface IUsuariosServicios
     {
         [OperationContract]
-        List<Model.UsuariosServicios> GetUsuariosServicios(bool? onlyActive);
+        List<Model.GetUsuariosServicios> GetUsuariosServicios(bool? onlyActive);
 
         [OperationContract]
         Model.UsuariosServicios CreateUsuariosServicios(Model.UsuariosServicios usuarioServicio);

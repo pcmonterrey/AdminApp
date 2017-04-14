@@ -20,9 +20,9 @@ namespace ServicesWCF
             return response;
         }
 
-        public List<Model.UsuariosServicios> GetUsuariosServicios(bool? onlyActive)
+        public List<Model.GetUsuariosServicios> GetUsuariosServicios(bool? onlyActive)
         {
-            List<Model.UsuariosServicios> response = oBussinessUsuariosServicios.GetUsuariosServicios(onlyActive);
+            List<Model.GetUsuariosServicios> response = oBussinessUsuariosServicios.GetUsuariosServicios(onlyActive);
             return response;
         }
         public Model.UsuariosServicios EditUsuariosServicios(Model.UsuariosServicios usuarioServicio)

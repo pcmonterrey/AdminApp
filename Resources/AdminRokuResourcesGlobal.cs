@@ -37,6 +37,22 @@ namespace Resources
    	
 		public static string LabelUsuariosUsuario  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosUsuario"); } }
        	
+		public static string LabelGetUsuariosServiciosDescripcionServicio  { get { return AdminRokuResourceManager.GetKeyValue("LabelGetUsuariosServiciosDescripcionServicio"); } }
+   	
+		public static string LabelGetUsuariosServiciosEstado  { get { return AdminRokuResourceManager.GetKeyValue("LabelGetUsuariosServiciosEstado"); } }
+   	
+		public static string LabelGetUsuariosServiciosFechaCreacion  { get { return AdminRokuResourceManager.GetKeyValue("LabelGetUsuariosServiciosFechaCreacion"); } }
+   	
+		public static string LabelGetUsuariosServiciosFechaFinServicio  { get { return AdminRokuResourceManager.GetKeyValue("LabelGetUsuariosServiciosFechaFinServicio"); } }
+   	
+		public static string LabelGetUsuariosServiciosFechaInicioServicio  { get { return AdminRokuResourceManager.GetKeyValue("LabelGetUsuariosServiciosFechaInicioServicio"); } }
+   	
+		public static string LabelGetUsuariosServiciosFechaModificacion  { get { return AdminRokuResourceManager.GetKeyValue("LabelGetUsuariosServiciosFechaModificacion"); } }
+   	
+		public static string LabelGetUsuariosServiciosNombreUsuario  { get { return AdminRokuResourceManager.GetKeyValue("LabelGetUsuariosServiciosNombreUsuario"); } }
+   	
+		public static string LabelGetUsuariosServiciosNumeroCreditos  { get { return AdminRokuResourceManager.GetKeyValue("LabelGetUsuariosServiciosNumeroCreditos"); } }
+   	
 		public static string LabelUsuariosServiciosEstado  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosServiciosEstado"); } }
    	
 		public static string LabelUsuariosServiciosFechaCreacion  { get { return AdminRokuResourceManager.GetKeyValue("LabelUsuariosServiciosFechaCreacion"); } }

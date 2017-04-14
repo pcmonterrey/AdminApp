@@ -52,7 +52,7 @@ namespace AdminRoku.Controllers
         {
             if (ModelState.IsValid)
             {
-                //oUsuariosServicios.CreateUsuariosServicios(usuariosServicios);
+                oUsuariosServicios.CreateUsuariosServicios(usuariosServicios);
                 //db.UsuariosServicios.Add(usuariosServicios);
                 //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
