@@ -40,6 +40,10 @@ namespace AdminRoku.Controllers
         // GET: UsuariosServicios/Create
         public ActionResult Create()
         {
+            ViewBag.listaUsuarios = oUsuarios.GetUsuarios(true).ToList(); 
+            ViewBag.listaServicios = oServicios.GetServicios(true).ToList();
+
+
             return View();
         }
 
@@ -57,6 +61,8 @@ namespace AdminRoku.Controllers
                 //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
+
 
             return View(usuariosServicios);
         }

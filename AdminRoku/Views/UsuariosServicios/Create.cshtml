@@ -7,7 +7,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
@@ -18,8 +18,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdServicio, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.IdServicio, new SelectList(new[]{"1",
-"2", "3"}), new { @class = "form-control" } )
+                @Html.DropDownListFor(model => model.IdServicio , new SelectList(ViewBag.listaServicios,"Id","Descripcion"), new { @class = "form-control" })
+                @*@@Html.DropDownList("Id", ViewBag.listaServicios as SelectList,new { @class = "form-control" } )*@
                 @Html.ValidationMessageFor(model => model.IdServicio, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -27,8 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdUsario, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.IdUsario, new SelectList(new[]{"1",
-"2", "3"}), new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.IdUsario, new SelectList(ViewBag.listaUsuarios, "Id", "Nombre"), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdUsario, "", new { @class = "text-danger" })
             </div>
         </div>
