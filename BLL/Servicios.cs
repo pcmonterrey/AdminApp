@@ -32,6 +32,8 @@ namespace BLL
                         sqlCommand.CommandText = "InsertServicio";
                         sqlCommand.Parameters.AddWithValue("@Descripcion", servicio.Descripcion);
                         sqlCommand.Parameters.AddWithValue("@Costo", servicio.Costo);
+                        sqlCommand.Parameters.AddWithValue("@Estado", servicio.Estado);
+                        sqlCommand.Parameters.AddWithValue("@FechaCreacion", servicio.FechaCreacion);
                         using (SqlDataReader reader = sqlCommand.ExecuteReader())
                         {
                             while (reader.Read())

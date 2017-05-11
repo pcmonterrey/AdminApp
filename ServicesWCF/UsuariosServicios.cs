@@ -31,6 +31,12 @@ namespace ServicesWCF
             return response;
         }
 
+        public Model.UsuariosServicios DeleteUsuariosServicios(Model.UsuariosServicios usuarioServicio)
+        {
+            Model.UsuariosServicios reponse = oBussinessUsuariosServicios.DeleteUsuarioServicio(usuarioServicio);
+            return reponse;
+        }
+
         
     }
 }

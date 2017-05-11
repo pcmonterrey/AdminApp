@@ -56,6 +56,8 @@ namespace AdminRoku.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuariosServicios.FechaCreacion = DateTime.Now;
+                usuariosServicios.Estado = true;
                 oUsuariosServicios.CreateUsuariosServicios(usuariosServicios);
                 //db.UsuariosServicios.Add(usuariosServicios);
                 //await db.SaveChangesAsync();
@@ -119,7 +121,9 @@ namespace AdminRoku.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            UsuariosServicios usuariosServicios = new UsuariosServicios();//await db.UsuariosServicios.FindAsync(id);
+            
+            UsuariosServicios usuariosServicios = new UsuariosServicios();
+            oUsuariosServicios.DeleteUsuariosServicios(usuariosServicios);//await db.UsuariosServicios.FindAsync(id);
             //db.UsuariosServicios.Remove(usuariosServicios);
             //await db.SaveChangesAsync();
             return RedirectToAction("Index");

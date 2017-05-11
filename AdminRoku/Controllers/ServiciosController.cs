@@ -54,6 +54,8 @@ namespace AdminRoku.Controllers
         {
             if (ModelState.IsValid)
             {
+                servicios.Estado = true;
+                servicios.FechaCreacion = DateTime.Now;
                 oServicios.CreateServicios(servicios);
                 //await Task.Run(() => { oServicios.CreateServicios(servicios); });
                 return RedirectToAction("Index");

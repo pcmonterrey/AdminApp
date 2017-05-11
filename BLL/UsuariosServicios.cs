@@ -32,9 +32,11 @@ namespace BLL
                         sqlcommand.CommandText = "InsertUsuarioServicio";
                         sqlcommand.Parameters.AddWithValue("@IdServicio", usuarioServicio.IdServicio);
                         sqlcommand.Parameters.AddWithValue("@IdUsuario", usuarioServicio.IdUsario);
+                        sqlcommand.Parameters.AddWithValue("@FechaCreacion", usuarioServicio.FechaCreacion);
                         sqlcommand.Parameters.AddWithValue("@FechaInicioServicio", usuarioServicio.FechaInicioServicio);
                         sqlcommand.Parameters.AddWithValue("@FechaFinServicio", usuarioServicio.FechaFinServicio);
                         sqlcommand.Parameters.AddWithValue("@NumerosCreditos", usuarioServicio.NumeroCreditos);
+                        sqlcommand.Parameters.AddWithValue("@Estado",usuarioServicio.Estado);
                         //sqlcommand.Parameters.AddWithValue("@Contrasena", usuarioServicio);
                         using (SqlDataReader reader = sqlcommand.ExecuteReader())
                         {
@@ -154,6 +156,64 @@ namespace BLL
 
         public Model.UsuariosServicios EditUsuarioServicio(Model.UsuariosServicios usuarioServicio)
         {
+            using (SqlConnection cn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    cn.Open();
+                    Model.UsuariosServicios objResult = new Model.UsuariosServicios();
+                    using (SqlCommand sqlcommand = new SqlCommand())
+                    {
+                        sqlcommand.Connection = cn;
+                        sqlcommand.CommandType = CommandType.StoredProcedure;
+                        sqlcommand.CommandText = "EditUsuario";
+                        sqlcommand.Parameters.AddWithValue("@Id", usuarioServicio.Id);
+                        //sqlcommand.Parameters.AddWithValue("@Nombre", usuarioServicio.Nombre);
+                        //sqlcommand.Parameters.AddWithValue("@FechaMod", SqlDbType.DateTime);
+                        //sqlcommand.Parameters.AddWithValue("@Usuario", usuarioServicio.Usuario);
+                        //sqlcommand.Parameters.AddWithValue("@Contrasena", usuarioServicio.Contrasena);
+                        sqlcommand.Parameters.AddWithValue("@Estado", usuarioServicio.Estado);
+                        using (SqlDataReader reader = sqlcommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                DateTime? dtFechaModificacion = new DateTime();
+                                if (!String.IsNullOrEmpty(reader["FechaMod"].ToString()))
+                                {
+                                    dtFechaModificacion = Convert.ToDateTime(reader["FechaMod"]);
+                                }
+                                else
+                                {
+                                    dtFechaModificacion = Convert.ToDateTime(reader["FechaMod"]);
+                                }
+                                objResult = new Model.UsuariosServicios
+                                {
+                                    Id = Convert.ToInt32(reader["Id"]),
+                                    //Nombre = reader["Nombre"].ToString(),
+                                    //Usuario = reader["Usuario"].ToString(),
+                                    //Contrasena = reader["Contraseña"].ToString(),
+                                    Estado = Convert.ToBoolean(reader["Estado"]),
+                                    FechaCreacion = Convert.ToDateTime(reader["FechaCreacion"]),
+                                    FechaModificacion = dtFechaModificacion
+
+                                };
+                            }
+                        }
+                    }
+                    return objResult;
+                }
+                catch (Exception e)
+                {
+                    return new Model.UsuariosServicios();
+                }
+                finally
+                {
+                    cn.Close();
+                }
+            }
+        }
+
+       public Model.UsuariosServicios DeleteUsuarioServicio(Model.UsuariosServicios usuarioServicio) {
             using (SqlConnection cn = new SqlConnection(_connectionString))
             {
                 try

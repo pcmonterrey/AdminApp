@@ -175,7 +175,7 @@ namespace DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditUsuario", idParameter, nombreParameter, usuarioParameter, contrasenaParameter, fechaModParameter, estadoParameter);
         }
     
-        public virtual int InsertUsuario(string nombre, string usuario, string contrasena)
+        public virtual int InsertUsuario(string nombre, string usuario, string contrasena, Nullable<bool> estado, Nullable<System.DateTime> fechaCreacion)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
@@ -189,7 +189,15 @@ namespace DAL
                 new ObjectParameter("Contrasena", contrasena) :
                 new ObjectParameter("Contrasena", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUsuario", nombreParameter, usuarioParameter, contrasenaParameter);
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUsuario", nombreParameter, usuarioParameter, contrasenaParameter, estadoParameter, fechaCreacionParameter);
         }
     
         public virtual int GetServicios(Nullable<bool> estatus)
@@ -201,7 +209,7 @@ namespace DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetServicios", estatusParameter);
         }
     
-        public virtual int InsertServicio(string descripcion, Nullable<decimal> costo)
+        public virtual int InsertServicio(string descripcion, Nullable<decimal> costo, Nullable<bool> estado, Nullable<System.DateTime> fechaCreacion)
         {
             var descripcionParameter = descripcion != null ?
                 new ObjectParameter("Descripcion", descripcion) :
@@ -211,7 +219,15 @@ namespace DAL
                 new ObjectParameter("Costo", costo) :
                 new ObjectParameter("Costo", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertServicio", descripcionParameter, costoParameter);
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertServicio", descripcionParameter, costoParameter, estadoParameter, fechaCreacionParameter);
         }
     
         public virtual int EditServicio(string descripcion, Nullable<decimal> costo, Nullable<bool> estado, Nullable<int> id)
@@ -244,7 +260,7 @@ namespace DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsuariosServicios>("GetUsuariosServicios", estatusParameter);
         }
     
-        public virtual int InsertUsuarioServicio(Nullable<int> idServicio, Nullable<int> idUsuario, Nullable<System.DateTime> fechaInicioServicio, Nullable<System.DateTime> fechaFinServicio, Nullable<short> numerosCreditos)
+        public virtual int InsertUsuarioServicio(Nullable<int> idServicio, Nullable<int> idUsuario, Nullable<bool> estado, Nullable<System.DateTime> fechaCreacion, Nullable<System.DateTime> fechaInicioServicio, Nullable<System.DateTime> fechaFinServicio, Nullable<int> numerosCreditos)
         {
             var idServicioParameter = idServicio.HasValue ?
                 new ObjectParameter("IdServicio", idServicio) :
@@ -253,6 +269,14 @@ namespace DAL
             var idUsuarioParameter = idUsuario.HasValue ?
                 new ObjectParameter("IdUsuario", idUsuario) :
                 new ObjectParameter("IdUsuario", typeof(int));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
     
             var fechaInicioServicioParameter = fechaInicioServicio.HasValue ?
                 new ObjectParameter("FechaInicioServicio", fechaInicioServicio) :
@@ -264,9 +288,9 @@ namespace DAL
     
             var numerosCreditosParameter = numerosCreditos.HasValue ?
                 new ObjectParameter("NumerosCreditos", numerosCreditos) :
-                new ObjectParameter("NumerosCreditos", typeof(short));
+                new ObjectParameter("NumerosCreditos", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUsuarioServicio", idServicioParameter, idUsuarioParameter, fechaInicioServicioParameter, fechaFinServicioParameter, numerosCreditosParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUsuarioServicio", idServicioParameter, idUsuarioParameter, estadoParameter, fechaCreacionParameter, fechaInicioServicioParameter, fechaFinServicioParameter, numerosCreditosParameter);
         }
     }
 }

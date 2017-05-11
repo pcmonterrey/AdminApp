@@ -14,5 +14,6 @@ namespace BLL
 
         Model.UsuariosServicios CreateUsuarioServicio(Model.UsuariosServicios usuarioServicio);
         Model.UsuariosServicios EditUsuarioServicio(Model.UsuariosServicios usuarioServicio);
+        Model.UsuariosServicios DeleteUsuarioServicio(Model.UsuariosServicios usuarioServicio);
     }
 }

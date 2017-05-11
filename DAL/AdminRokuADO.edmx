@@ -52,30 +52,6 @@
           <Property Name="FechaFinServicio" Type="datetime" Nullable="false" />
           <Property Name="NumeroCreditos" Type="smallint" Nullable="false" />
         </EntityType>
-        <Association Name="FK_UsuariosServicios_Servicios">
-          <End Role="Servicios" Type="Self.Servicios" Multiplicity="1" />
-          <End Role="UsuariosServicios" Type="Self.UsuariosServicios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Servicios">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsuariosServicios">
-              <PropertyRef Name="IdServicio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UsuariosServicios_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="UsuariosServicios" Type="Self.UsuariosServicios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsuariosServicios">
-              <PropertyRef Name="IdUsario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="EditServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
           <Parameter Name="Costo" Type="decimal" Mode="In" />
@@ -102,32 +78,30 @@
         <Function Name="InsertServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
           <Parameter Name="Costo" Type="decimal" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="datetime" Mode="In" />
         </Function>
         <Function Name="InsertUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
           <Parameter Name="Contrasena" Type="varchar" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="datetime" Mode="In" />
         </Function>
         <Function Name="InsertUsuarioServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdServicio" Type="int" Mode="In" />
           <Parameter Name="IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="datetime" Mode="In" />
           <Parameter Name="FechaInicioServicio" Type="datetime" Mode="In" />
           <Parameter Name="FechaFinServicio" Type="datetime" Mode="In" />
-          <Parameter Name="NumerosCreditos" Type="smallint" Mode="In" />
+          <Parameter Name="NumerosCreditos" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="AdminRokuModelStoreContainer">
           <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsuariosServicios" EntityType="Self.UsuariosServicios" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_UsuariosServicios_Servicios" Association="Self.FK_UsuariosServicios_Servicios">
-            <End Role="Servicios" EntitySet="Servicios" />
-            <End Role="UsuariosServicios" EntitySet="UsuariosServicios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UsuariosServicios_Usuarios" Association="Self.FK_UsuariosServicios_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="UsuariosServicios" EntitySet="UsuariosServicios" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -201,6 +175,8 @@
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Usuario" Mode="In" Type="String" />
             <Parameter Name="Contrasena" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="GetServicios">
           <Parameter Name="Estatus" Mode="In" Type="Boolean" />
@@ -208,6 +184,8 @@
           <FunctionImport Name="InsertServicio">
             <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="Costo" Mode="In" Type="Decimal" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="EditServicio">
             <Parameter Name="Descripcion" Mode="In" Type="String" />
@@ -221,9 +199,11 @@
           <FunctionImport Name="InsertUsuarioServicio">
             <Parameter Name="IdServicio" Mode="In" Type="Int32" />
             <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
             <Parameter Name="FechaInicioServicio" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFinServicio" Mode="In" Type="DateTime" />
-            <Parameter Name="NumerosCreditos" Mode="In" Type="Int16" />
+            <Parameter Name="NumerosCreditos" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Servicios">

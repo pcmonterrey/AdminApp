@@ -33,6 +33,8 @@ namespace BLL
                         sqlcommand.Parameters.AddWithValue("@Nombre", usuario.Nombre);
                         sqlcommand.Parameters.AddWithValue("@Usuario", usuario.Usuario);
                         sqlcommand.Parameters.AddWithValue("@Contrasena", usuario.Contrasena);
+                        sqlcommand.Parameters.AddWithValue("@Estado", usuario.Estado);
+                        sqlcommand.Parameters.AddWithValue("@FechaCreacion", usuario.FechaCreacion);
                         using (SqlDataReader reader = sqlcommand.ExecuteReader())
                         {
                             while (reader.Read())

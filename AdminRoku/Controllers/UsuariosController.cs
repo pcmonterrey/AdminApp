@@ -53,7 +53,10 @@ namespace AdminRoku.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuarios.Estado = true;
+                usuarios.FechaCreacion = DateTime.Now;
                 oUsuarios.CreateUsuarios(usuarios);
+                
                 //db.Usuarios.Add(usuarios);
                 //await db.SaveChangesAsync();
                 return RedirectToAction("Index");

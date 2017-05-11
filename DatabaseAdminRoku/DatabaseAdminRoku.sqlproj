@@ -73,5 +73,6 @@
     <Build Include="StoreProcedures\GetServicios.sql" />
     <Build Include="StoreProcedures\InsertServicio.sql" />
     <Build Include="StoreProcedures\GetUsuariosServicios.sql" />
+    <Build Include="StoreProcedures\InsertUsuarioServicio.sql" />
   </ItemGroup>
 </Project>
